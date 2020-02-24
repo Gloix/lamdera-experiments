@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "elm-format": "^0.8.2",
+    "elm-test": "^0.19.1-revision2",
+    "global": "^4.4.0"
+  }
+}
