@@ -13,6 +13,10 @@ import Set
 import Time
 import Types exposing (..)
 
+import PixelEngine
+import PixelEngine.Tile
+import Color
+
 
 type alias Model =
     FrontendModel
@@ -51,7 +55,23 @@ app =
 
 init : ( Model, Cmd FrontendMsg )
 init =
-    ( { counter = 0, clientId = "", connectedClients = Set.empty }, sendToBackend ClientJoin )
+    ( 
+        { counter = 0
+        , clientId = ""
+        , connectedClients = Set.empty
+        , gameArea = PixelEngine.tiledArea
+            { rows = 10
+            , tileset = PixelEngine.Tile.tileset
+                { source = "http://localhost:8000/dungeon_sheet.png"
+                , spriteWidth = 16
+                , spriteHeight = 16
+                }
+            , background = PixelEngine.colorBackground (Color.Color.rgb255 0 0 0)
+            }
+            []
+        }, 
+        sendToBackend ClientJoin
+    )
 
 
 update : FrontendMsg -> Model -> ( Model, Cmd FrontendMsg )

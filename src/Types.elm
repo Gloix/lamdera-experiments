@@ -4,6 +4,7 @@ import Lamdera exposing (ClientId)
 import Dict exposing (Dict)
 import Set exposing (Set)
 import Time
+import PixelEngine exposing (Area)
 
 
 type alias BackendModel =
@@ -16,7 +17,8 @@ type alias BackendModel =
 type alias FrontendModel =
     { counter : Int
     , clientId : String
-    , connectedClients: Set ClientId
+    , connectedClients : Set ClientId
+    , gameArea : Area FrontendMsg
     }
 
 
